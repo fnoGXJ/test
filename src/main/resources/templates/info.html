@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>INFO</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body style="padding-left: 20px;padding-right: 20px; padding-top: 10px">
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Basic</div>
+        <div class="panel-body">
+            Method: <span th:text="${method}"></span>
+            <br>
+            Time Consuming: <span th:text="${time}"></span> ms
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">Cookies</div>
+        <div class="panel-body">
+            <div th:each="cookie : ${cookies}">
+                <span th:text="${cookie.getName()}"></span>:
+                <span th:text="${cookie.getValue()}"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Headers</div>
+        <div class="panel-body">
+            <div th:each="header : ${headers}">
+                <span th:text="${header.getKey()}"></span>:
+                <span th:text="${header.getValue()}"></span>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info" th:if="${method} == POST">
+        <div class="panel-heading">PostParams</div>
+        <div class="panel-body">
+            <div th:each="postParam : ${postParams}">
+                <span th:text="${postParam.getKey()}"></span>:
+                <span th:text="${postParam.getValue()}"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
